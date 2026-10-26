@@ -20,7 +20,39 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module instruction_memory_tb(
+`timescale 1ns / 1ps
 
+module instruction_memory_tb;
+
+    reg  [31:0] tb_addr;
+    wire [31:0] tb_instruction;
+
+    instruction_memory uut (
+        .addr(tb_addr),
+        .instruction(tb_instruction)
     );
+
+    initial begin
+        tb_addr = 32'h0000_0000;
+        #10;
+
+        tb_addr = 32'h0000_0004;
+        #10;
+
+        tb_addr = 32'h0000_0008;
+        #10;
+
+        tb_addr = 32'h0000_000C;
+        #10;
+
+     
+        tb_addr = 32'h0000_0010;
+        #10;
+
+        tb_addr = 32'h0000_0014;
+        #10;
+
+        $finish;
+    end
+
 endmodule
